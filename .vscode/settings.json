@@ -1,0 +1,15 @@
+{
+    "javascript.validate.enable": false,
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "prettier.printWidth": 120,
+    // "prettier.eslintIntegration": true,
+    "editor.codeActionsOnSave": {
+        // For ESLint
+        "source.fixAll.eslint": true,
+        // For TSLint
+        "source.fixAll.tslint": true,
+        // For Stylelint
+        "source.fixAll.stylelint": true
+    }
+}
