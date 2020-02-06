@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Provider } from 'mobx-react';
 import TodoWrapper from './components/TodoWrapper';
+import TodoList from './components/TodoList';
+import TodoInput from './components/TodoInput';
+import RootStore from './store';
 
 const AppWrapper = styled.div`
   display: flex;
@@ -21,13 +25,20 @@ const Title = styled.h1`
   border-bottom: 1px solid #e9ecef;
 `;
 
+const root = new RootStore();
+
 const App = () => {
   return (
-    <AppWrapper>
-      <TodoWrapper>
-        <Title>Todo Mobx</Title>
-      </TodoWrapper>
-    </AppWrapper>
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <Provider {...root}>
+      <AppWrapper>
+        <TodoWrapper>
+          <Title>Todo Mobx</Title>
+          <TodoInput />
+          <TodoList />
+        </TodoWrapper>
+      </AppWrapper>
+    </Provider>
   );
 };
 
