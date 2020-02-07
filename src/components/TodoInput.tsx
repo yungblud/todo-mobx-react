@@ -17,10 +17,16 @@ const Input = styled.input`
   box-sizing: border-box;
 `;
 
-const TodoInput = () => {
-  return <Input />;
+interface OwnProps {}
+
+interface Props {
+  title: string;
+}
+
+const TodoInput = ({ title }: Props & OwnProps) => {
+  return <Input value={title} />;
 };
 
 export default inject((state: RootState) => ({
   title: state.input.title,
-}))(observer(TodoInput));
+}))(observer(TodoInput as React.FC<Props & OwnProps>));

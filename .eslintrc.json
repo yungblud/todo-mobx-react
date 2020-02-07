@@ -26,6 +26,7 @@
   "rules": {
     "react/jsx-filename-extension": 0,
     "react/jsx-one-expression-per-line": 0,
-    "import/extensions": 0
+    "import/extensions": 0,
+    "@typescript-eslint/no-unused-vars": "error"
   }
 }
