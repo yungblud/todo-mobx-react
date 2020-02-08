@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
@@ -17,16 +18,27 @@ const Input = styled.input`
   box-sizing: border-box;
 `;
 
-interface OwnProps {}
+// interface Props {
+//   title: string;
+// }
 
-interface Props {
+// interface OwnProps extends Props {
+//   hello: string;
+// }
+
+interface InjectedProps {
   title: string;
 }
 
-const TodoInput = ({ title }: Props & OwnProps) => {
+interface OwnProps {
+  hello: string;
+}
+
+const TodoInput = ({ hello, title }: OwnProps & InjectedProps) => {
+  console.log(hello);
   return <Input value={title} />;
 };
 
-export default inject((state: RootState) => ({
+export default inject<RootState, OwnProps, InjectedProps, {}>((state: RootState) => ({
   title: state.input.title,
-}))(observer(TodoInput as React.FC<Props & OwnProps>));
+}))(observer(TodoInput as React.FC<OwnProps>));
