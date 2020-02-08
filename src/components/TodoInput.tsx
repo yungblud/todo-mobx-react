@@ -1,8 +1,7 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import styled from 'styled-components';
-import { inject, observer } from 'mobx-react';
-import { RootState } from '../store/types';
+import { observer } from 'mobx-react';
+import useStores from '../hooks/useStores';
 
 const Input = styled.input`
   width: 100%;
@@ -18,27 +17,12 @@ const Input = styled.input`
   box-sizing: border-box;
 `;
 
-// interface Props {
-//   title: string;
-// }
+const TodoInput = observer(() => {
+  const {
+    input: { title, changeInput },
+  } = useStores();
 
-// interface OwnProps extends Props {
-//   hello: string;
-// }
+  return <Input name="title" value={title} onChange={(e: any) => changeInput(e.target.name, e.target.value)} />;
+});
 
-interface InjectedProps {
-  title: string;
-}
-
-interface OwnProps {
-  hello: string;
-}
-
-const TodoInput = ({ hello, title }: OwnProps & InjectedProps) => {
-  console.log(hello);
-  return <Input value={title} />;
-};
-
-export default inject<RootState, OwnProps, InjectedProps, {}>((state: RootState) => ({
-  title: state.input.title,
-}))(observer(TodoInput as React.FC<OwnProps>));
+export default TodoInput;

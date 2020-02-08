@@ -34,7 +34,7 @@ const App = () => {
       <AppWrapper>
         <TodoWrapper>
           <Title>Todo Mobx</Title>
-          <TodoInput hello="string" />
+          <TodoInput />
           <TodoList />
         </TodoWrapper>
       </AppWrapper>
