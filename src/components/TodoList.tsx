@@ -7,6 +7,11 @@ const Wrapper = styled.div`
   padding: 25px;
 `;
 
+const TodoItem = styled.div`
+  font-size: 13px;
+  line-height: 30px;
+`;
+
 const TodoList = () => {
   const {
     todos: { todos },
@@ -14,7 +19,7 @@ const TodoList = () => {
   return (
     <Wrapper>
       {todos.map(todo => (
-        <div key={todo.id}>{todo.todo}</div>
+        <TodoItem key={todo.id}>{todo.todo}</TodoItem>
       ))}
     </Wrapper>
   );
