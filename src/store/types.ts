@@ -1,6 +1,7 @@
 export interface InputState {
   title: string;
   changeInput(name: string, value: string): void;
+  addTodo(): void;
 }
 
 export interface TodosState {

@@ -19,10 +19,21 @@ const Input = styled.input`
 
 const TodoInput = observer(() => {
   const {
-    input: { title, changeInput },
+    input: { changeInput, title, addTodo },
   } = useStores();
 
-  return <Input name="title" value={title} onChange={(e: any) => changeInput(e.target.name, e.target.value)} />;
+  return (
+    <Input
+      name="title"
+      value={title}
+      onChange={(e: any) => changeInput(e.target.name, e.target.value)}
+      onKeyDown={e => {
+        if (e.key === 'Enter') {
+          addTodo();
+        }
+      }}
+    />
+  );
 });
 
 export default TodoInput;

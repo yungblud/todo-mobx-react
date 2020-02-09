@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { observer } from 'mobx-react';
 import useStores from '../hooks/useStores';
 
 const Wrapper = styled.div`
@@ -19,4 +20,4 @@ const TodoList = () => {
   );
 };
 
-export default TodoList;
+export default observer(TodoList);
