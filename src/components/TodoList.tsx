@@ -12,17 +12,25 @@ const TodoItem = styled.div`
   line-height: 30px;
 `;
 
-const TodoList = () => {
+const TodoList = observer(() => {
   const {
-    todos: { todos },
+    todos: { todos, removeTodo },
   } = useStores();
   return (
     <Wrapper>
-      {todos.map(todo => (
-        <TodoItem key={todo.id}>{todo.todo}</TodoItem>
-      ))}
+      {todos.map(todo => {
+        const onClick = (e: any) => {
+          e.preventDefault();
+          removeTodo(todo.id);
+        };
+        return (
+          <TodoItem key={todo.id} onClick={onClick}>
+            {todo.todo}
+          </TodoItem>
+        );
+      })}
     </Wrapper>
   );
-};
+});
 
-export default observer(TodoList);
+export default TodoList;

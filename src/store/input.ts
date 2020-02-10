@@ -15,7 +15,7 @@ export default class InputStore {
   @action
   addTodo = () => {
     this.root.todos.todos.push({
-      id: this.root.todos.todos[this.root.todos.todos.length - 1].id + 1,
+      id: this.root.todos.todos.length === 0 ? 1 : this.root.todos.todos[this.root.todos.todos.length - 1].id + 1,
       todo: this.title,
     });
     this.title = '';

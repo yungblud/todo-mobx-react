@@ -6,6 +6,7 @@ export interface InputState {
 
 export interface TodosState {
   todos: Todo[];
+  removeTodo(id: number): void;
 }
 
 export interface RootState {
